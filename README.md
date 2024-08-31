@@ -27,3 +27,21 @@ Este projeto é uma API RESTful desenvolvida em Node.js para encurtamento de URL
 git clone https://github.com/pedroronchini/url-shortener.git
 cd url-shortener
 ```
+2. **Instale as dependências**
+```
+npm install
+```
+3. **Configuração do Banco de Dados**
+Não há necessidade de configuração adicional para o SQLite, pois ele é um banco de dados embutido. O banco será criado automaticamente na primeira execução.
+4. **Execução do Projeto:**
+Inicie o servidor:
+```
+npm start
+```
+5. **Execução dos Testes:**
+Para rodar os testes unitários e de integração, use:
+```
+npm test
+```
+
+## Endpoints
