@@ -1,18 +1,18 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const sequelize = require('./config/database');
 const routes = require('./routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/urlShortener', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+sequelize.sync().then(() => {
+  console.log('Database synchronized');
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Unable to connect to the database:', err);
 });
 
 app.use(express.json());
 app.use(routes);
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});

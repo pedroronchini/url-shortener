@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const User = require('./User');
+const User = require('./user');
 
 const Url = sequelize.define('Url', {
     originalUrl: {
@@ -11,6 +11,10 @@ const Url = sequelize.define('Url', {
         type: DataTypes.STRING(6),
         allowNull: false,
         unique: true,
+    },
+    clicks: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
     },
     status: {
         type: DataTypes.STRING,
