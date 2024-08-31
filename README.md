@@ -32,16 +32,20 @@ cd url-shortener
 npm install
 ```
 3. **Configuração do Banco de Dados**
-Não há necessidade de configuração adicional para o SQLite, pois ele é um banco de dados embutido. O banco será criado automaticamente na primeira execução.
+
+  Não há necessidade de configuração adicional para o SQLite, pois ele é um banco de dados embutido. O banco será criado automaticamente na primeira execução.
 4. **Execução do Projeto:**
+
 Inicie o servidor:
 ```
 npm start
 ```
 5. **Execução dos Testes:**
+
 Para rodar os testes unitários e de integração, use:
 ```
 npm test
 ```
 
-## Endpoints
+## Considerações Finais
+Este projeto é um exemplo básico de uma API REST para encurtamento de URLs, com autenticação e manipulação de URLs, desenvolvido em Node.js. Ele pode ser expandido e modificado conforme as necessidades do usuário.
