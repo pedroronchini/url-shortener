@@ -20,3 +20,10 @@ Este projeto é uma API RESTful desenvolvida em Node.js para encurtamento de URL
 * **shortid:** Para gerar identificadores curtos e únicos.
 * **Jest:** Framework de testes unitários.
 * **Supertest:** Biblioteca para testes de integração com a API.
+
+## Instalação
+1. **Clone o repositório**
+```
+git clone https://github.com/pedroronchini/url-shortener.git
+cd url-shortener
+```
