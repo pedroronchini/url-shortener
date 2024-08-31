@@ -1,4 +1,4 @@
-const Url = require('../model/url');
+const Url = require('../models/url');
 const shortid = require('shortid');
 
 module.exports = {
