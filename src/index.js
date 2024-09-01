@@ -20,3 +20,5 @@ sequelize.sync().then(() => {
 app.use(express.json());
 app.use(routes);
 app.use(swagger);
+
+module.exports = app;

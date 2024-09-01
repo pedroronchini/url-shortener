@@ -40,9 +40,7 @@ module.exports = {
         return res.status(400).send({ error: 'Invalid credentials' });
       }
 
-      const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
-        expiresIn: 86400,
-      });
+      const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
 
       res.json({ token });
     } catch (err) {
