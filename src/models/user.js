@@ -23,7 +23,7 @@ const User = sequelize.define('User', {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
   }
-}, {
+},{
   hooks: {
     beforeCreate: async (user) => {
       if (user.changed('password')) {

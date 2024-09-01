@@ -1,13 +1,15 @@
 const Url = require('../models/url');
 const shortid = require('shortid');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   async shorten(req, res) {
     const { originalUrl } = req.body;
     const shortUrl = shortid.generate().slice(0, 6);
+    const domain = `${req.protocol}://${req.get('host')}`;
 
     if (!req.headers.authorization) {
-      return res.status(200).send({ shortUrl });
+      return res.status(200).send({ shortUrl: `${domain}/${shortUrl}` });
     }
 
     try {
@@ -18,11 +20,11 @@ module.exports = {
       const url = await Url.create({
         originalUrl,
         shortUrl,
-        createBy: userId
+        createdBy: userId
       });
 
-      return res.status(201).json(url);
-    } catch {
+      return res.status(201).send({ shortUrl: `${domain}/${shortUrl}` });
+    } catch (err) {
       console.error(err);
       res.status(500).send({ error: 'An error occurred' });
     }
@@ -35,7 +37,7 @@ module.exports = {
       });
 
       return res.status(200).send(urls);
-    } catch {
+    } catch (err) {
       console.error(err);
       res.status(500).send({ error: 'An error occurred' });
     }
@@ -56,10 +58,10 @@ module.exports = {
 
       url.originalUrl = originalUrl;
       url.updatedAt = new Date();
-      await url.save;
+      await url.save();
 
       return res.json(url);
-    } catch {
+    } catch (err) {
       console.error(err);
       res.status(500).send({ error: 'An error occurred' });
     }
@@ -79,10 +81,10 @@ module.exports = {
 
       url.status = 'N';
       url.deletedAt = new Date();
-      await url.save;
+      await url.save();
 
-      return res.status(204).json();
-    } catch {
+      return res.status(204).json(url);
+    } catch (err) {
       console.error(err);
       res.status(500).send({ error: 'An error occurred' });
     }

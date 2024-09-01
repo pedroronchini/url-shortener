@@ -31,6 +31,14 @@ const Url = sequelize.define('Url', {
         type: DataTypes.DATE,
         defaultValue: null,
     },
+    createdBy: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: User,
+            key: 'id',
+        },
+    },
 });
 
 Url.belongsTo(User, { foreignKey: 'createdBy', allowNull: true });

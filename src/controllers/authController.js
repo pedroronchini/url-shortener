@@ -7,13 +7,13 @@ module.exports = {
     const { email, password } = req.body;
 
     try {
-      const user = await User.findOne({ where: { email } });
+      const userExists = await User.findOne({ where: { email } });
 
-      if (user) {
+      if (userExists) {
         return res.status(400).send({ error: 'User already exists' });
       }
 
-      user = await User.create({ email, password });
+      const user = await User.create({ email, password });
 
       const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
 
@@ -40,7 +40,9 @@ module.exports = {
         return res.status(400).send({ error: 'Invalid credentials' });
       }
 
-      const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
+      const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
+        expiresIn: 86400,
+      });
 
       res.json({ token });
     } catch (err) {
