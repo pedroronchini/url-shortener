@@ -89,7 +89,7 @@ module.exports = {
   },
 
   async redirectUtl(req, res) {
-    const { shortUrl } = re.params;
+    const { shortUrl } = res.params;
 
     const url = await Url.findOne({
       where: { shortUrl, status: Y }
