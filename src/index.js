@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const sequelize = require('./config/database');
 const routes = require('./routes/routes');
+const swagger = require('./swagger');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,3 +19,4 @@ sequelize.sync().then(() => {
 
 app.use(express.json());
 app.use(routes);
+app.use(swagger);

@@ -22,7 +22,9 @@
     "mysql2": "^3.11.0",
     "sequelize": "^6.37.3",
     "shortid": "^2.2.16",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "jest": "^29.7.0",
